@@ -16,6 +16,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && DEBIAN_FRONTEND=noninteract
   ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 
+RUN  apt-get -y install build-essential gcc
 # install latest upx 3.96 by wget instead of `apt install upx-ucl`(only 3.95)
 RUN export arch=$(dpkg --print-architecture) && wget --no-check-certificate --progress=dot:mega https://github.com/upx/upx/releases/download/v${UPX_VER}/upx-${UPX_VER}-${arch}_linux.tar.xz && \
   tar -Jxf upx-${UPX_VER}-${arch}_linux.tar.xz && \
