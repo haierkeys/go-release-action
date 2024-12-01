@@ -10,11 +10,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && DEBIAN_FRONTEND=noninteract
   wget \
   git \
   build-essential \
+  gcc \
   zip \
   xz-utils \
   jq \
   ca-certificates \
   && rm -rf /var/lib/apt/lists/*
+
+
 
 # install latest upx 3.96 by wget instead of `apt install upx-ucl`(only 3.95)
 RUN export arch=$(dpkg --print-architecture) && wget --no-check-certificate --progress=dot:mega https://github.com/upx/upx/releases/download/v${UPX_VER}/upx-${UPX_VER}-${arch}_linux.tar.xz && \
@@ -34,5 +37,5 @@ RUN export arch=$(dpkg --print-architecture) && wget --no-check-certificate --pr
 COPY *.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 
-LABEL maintainer = "Jay Zhang <wangyoucao577@gmail.com>"
-LABEL org.opencontainers.image.source = "https://github.com/wangyoucao577/go-release-action"
+LABEL maintainer="HaierKeys <haierspis@gmail.com>"
+LABEL org.opencontainers.image.source="https://github.com/haierkeys/go-release-action"
